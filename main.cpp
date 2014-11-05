@@ -158,7 +158,7 @@ void test(WeinBecher becher, int first, bool expected) {
     exit(0);
 }
 
-void main() {
+int main() {
     {
         WeinBecher becher;
         becher.push_back(Becher(8, 8));
@@ -216,4 +216,5 @@ void main() {
         becher.push_back(Becher(50, 20));
         test(becher, 2, true);
     }
+    return 0;
 }
