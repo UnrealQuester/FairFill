@@ -68,17 +68,6 @@ void printBecher(const WeinBecher &becher) {
     }
 }
 
-bool tryExchange(Becher &a, Becher &b, WeinBecher &becher, std::vector<WeinBecher> &states) {
-    auto oldstate = becher;
-    exchange(a, b);
-    if(std::find(states.begin(), states.end(), becher) != states.end()) {
-        becher = oldstate;
-        return false;
-    }
-    states.push_back(becher);
-    return true;
-}
-
 struct Tausch {
     int von;
     int zu;
