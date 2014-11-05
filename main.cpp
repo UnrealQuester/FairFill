@@ -19,8 +19,6 @@ public:
         return actual == max;
     }
 
-
-
     int max;
     int actual;
 };
@@ -59,7 +57,7 @@ void exchange(Becher &a, Becher &b) {
 bool isBalanced(const WeinBecher &becher, int first) {
     return (
         std::accumulate(becher.begin(), becher.begin()+first, NullBecher).actual
-        == std::accumulate(becher.begin()+(first+1), becher.end(), NullBecher).actual);
+        == std::accumulate(becher.begin()+first, becher.end(), NullBecher).actual);
 }
 
 void printBecher(const WeinBecher &becher) {
