@@ -97,8 +97,6 @@ void printExchanges(Abfolge abfolge) {
 
 Abfolge umfullen(WeinBecher becher, int first, std::map<WeinBecher, int> &map, int depth) {
     auto iter = map.find(becher);
-    //printBecher(becher);
-    //cout << endl;
     if(iter != map.end()) {
         if((*iter).second <= depth)
         return null;
@@ -119,17 +117,11 @@ Abfolge umfullen(WeinBecher becher, int first, std::map<WeinBecher, int> &map, i
             tausche.push_back(tausch);
         }
     }
-    for(int i = 0; i < tausche.size(); i++) {
-        //cout << tausche[i].von << " " << tausche[i].zu << endl;
-    }
     Abfolge shortest = null;
     for(int i = 0; i < tausche.size(); i++) {
         WeinBecher b = becher;
         exchange(b[tausche[i].von], b[tausche[i].zu]);
         Abfolge solution = umfullen(b, first, map, depth+1);
-        //cout << solution.valid << endl;
-        //printExchanges(solution);
-        //cout << endl;
         if(solution.valid)
             solution.abfolge.push_back(tausche[i]);
         if(solution < shortest)
@@ -152,40 +144,6 @@ int main() {
         becher.push_back(Becher(8, 8));
         becher.push_back(Becher(5, 0));
         becher.push_back(Becher(3, 0));
-        test(becher, 1, true);
-    }
-    {
-        WeinBecher becher;
-        becher.push_back(Becher(5, 0));
-        becher.push_back(Becher(8, 8));
-        becher.push_back(Becher(3, 0));
-        becher.push_back(Becher(1, 0));
-        test(becher, 1, true);
-    }
-    {
-        WeinBecher becher;
-        becher.push_back(Becher(5, 0));
-        becher.push_back(Becher(10, 10));
-        becher.push_back(Becher(3, 0));
-        becher.push_back(Becher(1, 0));
-        test(becher, 1, true);
-    }
-    {
-        WeinBecher becher;
-        becher.push_back(Becher(3, 0));
-        becher.push_back(Becher(20, 20));
-        becher.push_back(Becher(1, 1));
-        becher.push_back(Becher(2, 0));
-        test(becher, 1, false);
-    }
-    {
-        WeinBecher becher;
-        becher.push_back(Becher(4, 4));
-        becher.push_back(Becher(4, 4));
-        becher.push_back(Becher(2, 0));
-        becher.push_back(Becher(2, 0));
-        becher.push_back(Becher(2, 0));
-        becher.push_back(Becher(2, 0));
         test(becher, 1, true);
     }
     {
