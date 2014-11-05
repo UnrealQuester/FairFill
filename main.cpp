@@ -152,7 +152,8 @@ Abfolge umfullen(WeinBecher becher, int first, std::map<WeinBecher, int> &map, i
 }
 
 void test(WeinBecher becher, int first, bool expected) {
-    auto tausche = umfullen(becher, first, std::map<WeinBecher, int>(), 0);
+    std::map<WeinBecher, int> map;
+    auto tausche = umfullen(becher, first, map, 0);
     printExchanges(tausche);
     cout << endl << endl;
     exit(0);
